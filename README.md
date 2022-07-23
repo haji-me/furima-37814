@@ -42,7 +42,7 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_one :record
+- has_many :records
 
 
 ## items テーブル

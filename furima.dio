@@ -105,7 +105,7 @@
                 <mxCell id="64" value="item_id" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="62">
                     <mxGeometry y="56" width="160" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="65" style="edgeStyle=none;jumpSize=30;html=1;entryX=0.006;entryY=1.144;entryDx=0;entryDy=0;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;strokeWidth=2;exitX=0.468;exitY=1.144;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="41" target="63">
+                <mxCell id="65" style="edgeStyle=none;jumpSize=30;html=1;entryX=0.006;entryY=1.144;entryDx=0;entryDy=0;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeWidth=2;exitX=0.468;exitY=1.144;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="41" target="63">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="350" y="505" as="sourcePoint"/>
                         <Array as="points">
