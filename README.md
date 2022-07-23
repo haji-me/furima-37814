@@ -84,7 +84,7 @@ Things you may want to cover:
 
 | Column                        | Type       | Options                        |
 | ----------------------------- | ---------- | ------------------------------ |
-| postcode                      | string    | null: false                    |
+| postcode                      | string     | null: false                    |
 | prefecture_id                 | integer    | null: false                    |
 | municipality                  | string     | null: false                    |
 | street_number                 | string     | null: false                    |
