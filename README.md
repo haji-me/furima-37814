@@ -42,8 +42,7 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_many :user_items
-- has_many :items, through: :user_records
+- has_one :record
 
 
 ## items テーブル
@@ -63,38 +62,36 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_many :user_items
-- has_many :users, through: :user_records
+- has_one :record
 
 
 
-## user_items テーブル
+## records テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| purchase           | date       | null: false                    |
 | user               | references | null: false, foreign_key: true |
 | item               | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :address
 - belongs_to :user
 - belongs_to :item
+- has_one :address
 
 
 ## addresses テーブル
 
 | Column                        | Type       | Options                        |
 | ----------------------------- | ---------- | ------------------------------ |
-| postcode                      | integer    | null: false                    |
+| postcode                      | string    | null: false                    |
 | prefecture_id                 | integer    | null: false                    |
 | municipality                  | string     | null: false                    |
 | street_number                 | string     | null: false                    |
 | building_name                 | string     |                                |
 | phone                         | string     | null: false                    |
-| user_items                    | references | null: false, foreign_key: true |
+| record                        | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user_items
+- belongs_to :record
