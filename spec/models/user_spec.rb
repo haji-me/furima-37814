@@ -50,9 +50,23 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
 
-      it 'passwordが半角英数字混合でなければ登録できない' do
+      it 'passwordが数字のみでは登録できない' do
         @user.password = '123456'
         @user.password_confirmation = '123456'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password is invalid')
+      end
+
+      it 'passwordが英字のみでは登録できない' do
+        @user.password = 'abcdef'
+        @user.password_confirmation = 'abcdef'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password is invalid')
+      end
+
+      it 'passwordが全角文字を含むパスワードでは登録できない' do
+        @user.password = 'TTTTTT'
+        @user.password_confirmation = 'TTTTTT'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is invalid')
       end
@@ -76,8 +90,14 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Last name can't be blank")
       end
 
-      it 'last_nameが全角の漢字とひらがな以外では登録できない' do
-        @user.last_name = 'タナカ'
+      it 'last_nameが半角入力では登録できない' do
+        @user.last_name = 'ﾀﾅｶ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name is invalid')
+      end
+
+      it 'last_nameが英字入力では登録できない' do
+        @user.last_name = 'Tanaka'
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name is invalid')
       end
@@ -88,8 +108,14 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
 
-      it 'first_nameが全角の漢字とひらがな以外では登録できない' do
-        @user.first_name = 'タロウ'
+      it 'first_nameが半角入力では登録できない' do
+        @user.first_name = 'ﾀﾛｳ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name is invalid')
+      end
+
+      it 'first_nameが英字入力では登録できない' do
+        @user.first_name = 'tarou'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name is invalid')
       end
