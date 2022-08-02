@@ -15,5 +15,4 @@ class DetailCategory < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :itens
-
 end

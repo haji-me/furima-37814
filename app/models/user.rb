@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :items
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   zenkaku = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
   katakana = /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/
 
