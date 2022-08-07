@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, only: [:new, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set, only: [:edit, :destroy]
 
@@ -44,10 +44,6 @@ end
 def item_params
   params.require(:item).permit(:image, :name, :explanation, :detail_category_id, :detail_condition_id, :delivery_charge_id,
                                :prefecture_id, :delivery_date_id, :price).merge(user_id: current_user.id)
-end
-
-def move_to_index
-  redirect_to new_user_session_path unless user_signed_in?
 end
 
 def set_item
