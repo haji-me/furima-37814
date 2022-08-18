@@ -21,36 +21,37 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-      @item.destroy
-      redirect_to root_path
+    @item.destroy
+    redirect_to root_path
   end
 
   def show
   end
 
   def edit
+    redirect_to root_path if @item.order.present?
   end
 
-def update
-  if @item.update(item_params)
-    redirect_to root_path
-  else
-    render :edit
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
-end
 
   private
 
-def item_params
-  params.require(:item).permit(:image, :name, :explanation, :detail_category_id, :detail_condition_id, :delivery_charge_id,
-                               :prefecture_id, :delivery_date_id, :price).merge(user_id: current_user.id)
-end
+  def item_params
+    params.require(:item).permit(:image, :name, :explanation, :detail_category_id, :detail_condition_id, :delivery_charge_id,
+                                 :prefecture_id, :delivery_date_id, :price).merge(user_id: current_user.id)
+  end
 
-def set_item
-  @item = Item.find(params[:id])
-end
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
-def set
-  redirect_to root_path unless current_user.id == @item.user_id
-end
+  def set
+    redirect_to root_path unless current_user.id == @item.user_id
+  end
 end
