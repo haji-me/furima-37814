@@ -9,10 +9,10 @@ class OrderAddress
     validates :municipality
     validates :street_number
     validates :building_name,                  allow_blank: true
-    validates :phone,                          format: { with: /\A\d{10}$|^\d{11}\z/ },
-                                               length: { minimum: 10, maximum: 11 }
+    validates :phone,                          format: { with: /\A\d{10}$|^\d{11}\z/ }
     validates :user_id
     validates :token
+    validates :item_id
   end
 
   def save

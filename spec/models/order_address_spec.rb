@@ -18,7 +18,7 @@ RSpec.describe OrderAddress, type: :model do
       end
     end
 
-    context '内容に問題がある場合' do
+    context '商品購入ができない場合' do
       it 'postcodeが空だと保存できないこと' do
         @order_address.postcode = ''
         @order_address.valid?
@@ -88,7 +88,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'phoneが9桁以下だと保存できないこと' do
         @order_address.phone = '03123456'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone is too short (minimum is 10 characters)")
+        expect(@order_address.errors.full_messages).to include("Phone is invalid")
       end
 
       it 'phoneが12桁以上だと保存できないこと' do
@@ -112,7 +112,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'itemが紐付いていないと保存できないこと' do
         @order_address.item_id = nil
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include()
+        expect(@order_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
